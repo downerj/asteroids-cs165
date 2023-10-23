@@ -62,13 +62,13 @@ Game :: Game(const Point & tl, const Point & br)
 	maximum.setY(topLeft.getY()     + OFF_SCREEN_BORDER_AMOUNT);
 	
 	// Create large asteroids to start
-	for (int i = 0; i < NUM_ASTEROIDS; i++)
+	for (unsigned int i = 0; i < NUM_ASTEROIDS; i++)
 		asteroids.push_back(createLargeAsteroid());
 	 
 	// Create shooting stars
 	float magnitude1 = 2.0;
 	float angle      = random(0.0, 360.0);
-	for (int i = 0; i < NUM_SHOOTING_STARS; i++)
+	for (unsigned int i = 0; i < NUM_SHOOTING_STARS; i++)
 	{
 		float x = random(topLeft.getX(), bottomRight.getX());
 		float y = random(bottomRight.getY(), topLeft.getY());
@@ -83,7 +83,7 @@ Game :: Game(const Point & tl, const Point & br)
 	
 	// Create normal stars (background)
 	float magnitude2 = 0.1;
-	for (int i = 0; i < NUM_NORMAL_STARS; i++)
+	for (unsigned int i = 0; i < NUM_NORMAL_STARS; i++)
 	{
 		float x = random(topLeft.getX(), bottomRight.getX());
 		float y = random(bottomRight.getY(), topLeft.getY());
@@ -312,8 +312,8 @@ void Game :: draw(const Interface & interface)
 		
 		// Number of lives (ship symbol x lives)
 		Point livesSymbolLoc;
-		int livesToDraw = (lives <= 20) ? lives : 20;
-		for (int i = 0; i < livesToDraw; i++)
+		unsigned int livesToDraw = (lives < 0) ? 0 : (lives <= 20) ? lives : 20;
+		for (unsigned int i = 0; i < livesToDraw; i++)
 		{
 			livesSymbolLoc.setX(maximum.getX() - 30 - i * 15);
 			livesSymbolLoc.setY(maximum.getY() - 30);
@@ -453,7 +453,7 @@ void Game :: advanceAsteroids()
 		wrapObject(*it5, minimum, maximum);
 	}
 	if (asteroids.size() < NUM_ASTEROIDS)
-		for (int i = 0; i < (NUM_ASTEROIDS - asteroids.size()); i++)
+		for (unsigned int i = 0; i < (NUM_ASTEROIDS - asteroids.size()); i++)
 			asteroids.push_back(createLargeAsteroid());
 }
 

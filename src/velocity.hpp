@@ -18,7 +18,8 @@ class Velocity
    Velocity();
 	Velocity(const Velocity & velocity);
    Velocity(float magnitude, float angle);
-	
+	Velocity& operator=(const Velocity&) = default;
+
 	// Accessors
 	float getMagnitude() const;
 	float getAngle()     const;

@@ -381,7 +381,7 @@ void ShootingStar :: draw()
 	Color color1(0.0, 0.0, 0.75); // Blue-ish
 	Color color2(0.0, 0.25, 1.0);  // Blue-cyan-ish
 	
-	for (int i = 0; i < TRAIL_LENGTH; i++)
+	for (unsigned int i = 0; i < TRAIL_LENGTH; i++)
 	{
 		// Dim the color based on position on the trail
 		color1.setRed(color1.getRed() - 

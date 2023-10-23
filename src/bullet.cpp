@@ -114,7 +114,7 @@ void Shockwave :: draw()
 	color.setGreen(color.getGreen() - radius / FADE_PERIOD);
 	color.setBlue(color.getBlue() - radius / FADE_PERIOD);
 	
-	for (int i = 0; i < SHOCKWAVE_THICKNESS; i++)
+	for (unsigned int i = 0; i < SHOCKWAVE_THICKNESS; i++)
 	{
 		if (isAlive())
 			drawCircle(getPoint(), radius + i, color);

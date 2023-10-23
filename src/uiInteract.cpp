@@ -115,7 +115,7 @@ void drawCallback()
  *   INPUT   key:   the key we pressed according to the GLUT_KEY_ prefix
  *           x y:   the position in the window, which we ignore
  *************************************************************************/
-void keyDownCallback(int key, int x, int y)
+void keyDownCallback(int key, int, int)
 {
    // Even though this is a local variable, all the members are static
    // so we are actually getting the same version as in the constructor.
@@ -129,7 +129,7 @@ void keyDownCallback(int key, int x, int y)
  *   INPUT   key:   the key we pressed according to the GLUT_KEY_ prefix
  *           x y:   the position in the window, which we ignore
  *************************************************************************/
-void keyUpCallback(int key, int x, int y)
+void keyUpCallback(int key, int, int)
 {
    // Even though this is a local variable, all the members are static
    // so we are actually getting the same version as in the constructor.
@@ -142,7 +142,7 @@ void keyUpCallback(int key, int x, int y)
  * Generic callback to a regular ascii keyboard event, such as
  * the space bar or the letter 'q'
  ***************************************************************/
-void keyboardCallback(unsigned char key, int x, int y)
+void keyboardCallback(unsigned char key, int, int)
 {
    // Even though this is a local variable, all the members are static
    // so we are actually getting the same version as in the constructor.

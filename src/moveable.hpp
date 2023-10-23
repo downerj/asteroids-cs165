@@ -46,6 +46,8 @@ public:
 	
 	// Draw
 	virtual void draw() = 0;
+
+	virtual ~Moveable() = default;
 };
 
 #endif

@@ -101,7 +101,7 @@ void drawDigit(const Point & topLeft, const char & digit, const Color & color)
    assert(r >= 0 && r <= 9);
 
    // go through each segment.
-   for (int c = 0; c < 20 && NUMBER_OUTLINES[r][c] != -1; c += 4)
+   for (unsigned int c = 0; c < 20 && NUMBER_OUTLINES[r][c] != -1; c += 4)
    {
       assert(NUMBER_OUTLINES[r][c    ] != -1 &&
              NUMBER_OUTLINES[r][c + 1] != -1 &&
@@ -212,7 +212,7 @@ void drawPolygon(const Point & center, int radius, int points, int rotation)
    //one point to the next
    for (double i = 0; i < 2 * M_PI; i += (2 * M_PI) / points)
    {
-      Point temp(false /*check*/);
+      Point temp;
       temp.setX(center.getX() + (radius * cos(i)));
       temp.setY(center.getY() + (radius * sin(i)));
       rotate(temp, center, rotation);
@@ -241,7 +241,7 @@ void rotate(Point & point, const Point & origin, int rotation)
    double sinA = sin(deg2rad(rotation));
 
    // remember our original point
-   Point tmp(false /*check*/);
+   Point tmp;
    tmp.setX(point.getX() - origin.getX());
    tmp.setY(point.getY() - origin.getY());
 
@@ -314,7 +314,7 @@ void drawLander(const Point & point, const Color & color)
    // draw it
    glColor3f(color.getRed(), color.getGreen(), color.getBlue());
    glBegin(GL_LINE_STRIP);
-   for (int i = 0; i < sizeof(points) / sizeof(points[0]); i++)
+   for (unsigned int i = 0; i < sizeof(points) / sizeof(points[0]); i++)
         glVertex2f(point.getX() + points[i].x,
                    point.getY() + points[i].y);
 
@@ -358,7 +358,7 @@ void drawLanderFlames(const Point & point,
       };
       
       glVertex2f(point.getX() - 2, point.getY() + 2);
-      for (int i = 0; i < 3; i++)
+      for (unsigned int i = 0; i < 3; i++)
          glVertex2f(point.getX() + points[iFlame][i].x,
                    point.getY() + points[iFlame][i].y);
       glVertex2f(point.getX() + 2, point.getY() + 2);
@@ -375,7 +375,7 @@ void drawLanderFlames(const Point & point,
       };
       
       glVertex2f(point.getX() + 6, point.getY() + 12);
-      for (int i = 0; i < 3; i++)
+      for (unsigned int i = 0; i < 3; i++)
          glVertex2f(point.getX() + points[iFlame][i].x,
                     point.getY() + points[iFlame][i].y);
       glVertex2f(point.getX() + 6, point.getY() + 10);
@@ -392,7 +392,7 @@ void drawLanderFlames(const Point & point,
       };
       
       glVertex2f(point.getX() - 6, point.getY() + 12);
-      for (int i = 0; i < 3; i++)
+      for (unsigned int i = 0; i < 3; i++)
          glVertex2f(point.getX() + points[iFlame][i].x,
                     point.getY() + points[iFlame][i].y);
       glVertex2f(point.getX() - 6, point.getY() + 10);
@@ -464,10 +464,10 @@ void drawRect(const Point & center, int width, int height, int rotation)
 void drawRect(const Point & center, int width, int height, int rotation,
               const Color & color)
 {
-   Point tl(false /*check*/); // top left
-   Point tr(false /*check*/); // top right 
-   Point bl(false /*check*/); // bottom left
-   Point br(false /*check*/); // bottom right
+   Point tl; // top left
+   Point tr; // top right 
+   Point bl; // bottom left
+   Point br; // bottom right
 
    //Top Left point
    tl.setX(center.getX() - (width  / 2));
@@ -595,7 +595,7 @@ void drawToughBird(const Point & center, float radius, int hits,
    glBegin(GL_TRIANGLES);   
 
    // three points: center, pt1, pt2
-   Point pt1(false /*check*/);
+   Point pt1;
    pt1.setX(center.getX() + (radius * cos(0.0)));
    pt1.setY(center.getY() + (radius * sin(0.0)));   
    Point pt2(pt1);
@@ -650,9 +650,9 @@ void drawSacredBird(const Point & center, float radius)
    
    //loop around a circle the given number of times drawing a line from
    //one point to the next
-   for (int i = 0; i < 5; i++)
+   for (unsigned int i = 0; i < 5; i++)
    {
-      Point temp(false /*check*/);
+      Point temp;
       float radian = (float)i * (M_PI * 2.0) * 0.4;
       temp.setX(center.getX() + (radius * cos(radian)));
       temp.setY(center.getY() + (radius * sin(radian)));
@@ -685,7 +685,7 @@ void drawSmallAsteroid(const Point & center, int rotation,
    
 	glColor3f(color.getRed(), color.getGreen(), color.getBlue());
    glBegin(GL_LINE_STRIP);
-   for (int i = 0; i < sizeof(points)/sizeof(PT); i++)
+   for (unsigned int i = 0; i < sizeof(points)/sizeof(PT); i++)
    {
       Point pt(center.getX() + points[i].x, 
                center.getY() + points[i].y);
@@ -717,7 +717,7 @@ void drawMediumAsteroid(const Point & center, int rotation,
    
 	glColor3f(color.getRed(), color.getGreen(), color.getBlue());
    glBegin(GL_LINE_STRIP);
-   for (int i = 0; i < sizeof(points)/sizeof(PT); i++)
+   for (unsigned int i = 0; i < sizeof(points)/sizeof(PT); i++)
    {
       Point pt(center.getX() + points[i].x, 
                center.getY() + points[i].y);
@@ -749,7 +749,7 @@ void drawLargeAsteroid(const Point & center, int rotation,
    
 	glColor3f(color.getRed(), color.getGreen(), color.getBlue());
    glBegin(GL_LINE_STRIP);
-   for (int i = 0; i < sizeof(points)/sizeof(PT); i++)
+   for (unsigned int i = 0; i < sizeof(points)/sizeof(PT); i++)
    {
       Point pt(center.getX() + points[i].x, 
                center.getY() + points[i].y);
@@ -789,7 +789,7 @@ void drawShip(const Point & center, int rotation, const Color & color,
    
 	glColor3f(color.getRed(), color.getGreen(), color.getBlue());
    glBegin(GL_LINE_STRIP);
-   for (int i = 0; i < sizeof(pointsShip)/sizeof(PT); i++)
+   for (unsigned int i = 0; i < sizeof(pointsShip)/sizeof(PT); i++)
    {
       Point pt(center.getX() + pointsShip[i].x, 
                center.getY() + pointsShip[i].y);
@@ -813,7 +813,7 @@ void drawShip(const Point & center, int rotation, const Color & color,
       // glColor3f(1.0 /* red % */, 0.0 /* green % */, 0.0 /* blue % */);
 		glColor3f(0.0, 1.0, 1.0); // Cyan
       int iFlame = random(0, 3);
-      for (int i = 0; i < 5; i++)
+      for (unsigned int i = 0; i < 5; i++)
       {
          Point pt(center.getX() + pointsFlame[iFlame][i].x, 
                   center.getY() + pointsFlame[iFlame][i].y);

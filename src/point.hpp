@@ -25,7 +25,6 @@ class Point
 public:
    // Constructors
    Point()            : x(0.0), y(0.0)  {}
-   Point(bool check)  : x(0.0), y(0.0)  {}
    Point(float x, float y);
 
    // Getters
